@@ -9,6 +9,11 @@ export default function AudioPlaying({ url }: any) {
       autoplay: true,
       loop: true,
       volume: 0.4,
+      onplayerror: function () {
+        sound.once("unlock", function () {
+          sound.play();
+        });
+      },
     });
 
     return () => {
