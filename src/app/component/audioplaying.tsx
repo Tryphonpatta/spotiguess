@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Howl } from "howler";
 
 export default function AudioPlaying({ url }: any) {
-  console.log(url);
+  // console.log(url);
   useEffect(() => {
     const sound = new Howl({
       src: [url],

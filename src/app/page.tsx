@@ -3,17 +3,19 @@ import Image from "next/image";
 import { NextUIProvider } from "@nextui-org/react";
 import CreateClient from "../../util/getAccesstoken";
 import { Button, ButtonGroup, Input } from "@nextui-org/react";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import DisplayImage from "./component/displayimage";
 import SongList from "./component/songlist";
 import ShuffleList from "./lib/shufflelist";
 import Guessing from "./component/guessing";
+import { time } from "console";
 export default function Home() {
   // const accesstoken = CreateClient();
   const [playlistid, setPlaylist] = useState<string>("");
   const [playlistdata, setPlaylistdata] = useState<any>(null);
   const [isplay, setIsplay] = useState<boolean>(false);
   const [tracklist, setTracklist] = useState<any>(null);
+  const [isload, setIsload] = useState<boolean>(false);
 
   const getPlaylist = async () => {
     const accesstoken = await CreateClient();
@@ -26,15 +28,20 @@ export default function Home() {
     const data = await response.json();
     setPlaylistdata(data);
   };
-
-  const handleplay = () => {
+  useEffect(() => {
+    setIsload(false);
+    if (!playlistdata?.tracks) return;
+    const shufflelist = ShuffleList(playlistdata?.tracks);
+    setTracklist(shufflelist);
+    setIsload(true);
+  }, [playlistdata?.tracks]);
+  const handleplay = async () => {
     setIsplay(true);
     // const shufflelist = ShuffleList(playlistdata?.tracks.items);
     // console.log(playlistdata?.tracks.items);
     // console.log(playlistdata?.tracks.items);
-    const shufflelist = ShuffleList(playlistdata?.tracks);
-    setTracklist(shufflelist);
-    // console.log(shufflelist);
+    // console.log("track", tracklist);
+    // console.log("shuffle", shufflelist);
   };
 
   return (
@@ -65,12 +72,19 @@ export default function Home() {
               <div className=" h-full w-full mx-auto flex flex-col gap-2 mt-2 items-center">
                 <DisplayImage imageurl={playlistdata?.images[0].url} />
                 <SongList track={playlistdata?.tracks.items}></SongList>
-                <Button onClick={handleplay}>Play!</Button>
+                <Button
+                  onClick={handleplay}
+                  isDisabled={
+                    isload && tracklist && tracklist.length >= 10 ? false : true
+                  }
+                >
+                  Play!
+                </Button>
               </div>
             )}
           </>
         )}
-        {isplay && (
+        {isplay && tracklist && (
           <div className="w-full h-full flex flex-col justify-center items-center">
             <Guessing track={tracklist} />
             <Button onPress={() => setIsplay(false)}>Quit</Button>
