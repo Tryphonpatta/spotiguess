@@ -1,4 +1,4 @@
-This is doesn't work in mobile, I will it late. T_T
+This is doesn't work in mobile, I will it later. T_T
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
