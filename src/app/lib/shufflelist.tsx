@@ -2,11 +2,13 @@ export default function ShuffleList({ items }: any) {
   const shufflelist = [] as any;
   for (let i = 0; i < items.length; i++) {
     //copy to shufflelist
+    if (!items[i].track.preview_url) continue;
     shufflelist.push({
       title: items[i].track.name,
       artist: items[i].track.artists,
       url: items[i].track.preview_url,
     });
+    console.log(items[i].track.name, items[i].track.preview_url);
   }
   for (let i = shufflelist.length - 1; i > 0; i--) {
     //shuffle
