@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { NextUIProvider } from "@nextui-org/react";
-import CreateClient from "../../util/getAccesstoken";
+import getaccessToken from "../../util/getAccesstoken";
 import { Button, ButtonGroup, Input } from "@nextui-org/react";
 import { use, useEffect, useState } from "react";
 import DisplayImage from "./component/displayimage";
@@ -20,7 +20,7 @@ export default function Home() {
   const [isload, setIsload] = useState<boolean>(false);
 
   const getPlaylist = async () => {
-    const accesstoken = await CreateClient();
+    const accesstoken = await getaccessToken();
     const id = playlistid.slice(playlistid.indexOf("playlist/") + 9);
     const response = await fetch("https://api.spotify.com/v1/playlists/" + id, {
       headers: {

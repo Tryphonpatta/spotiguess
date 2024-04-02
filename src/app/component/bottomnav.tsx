@@ -38,20 +38,21 @@ export default function BottomNav() {
           Create new item
           <FaLink />
         </div>
-        <button
-          data-tooltip-target="tooltip-settings"
+        <a
+          href="/search"
+          data-tooltip-target="tooltip-search"
           type="button"
           className="inline-flex flex-col items-center justify-center px-5 hover:bg-[#A4BE7B] dark:hover:bg-gray-800 group rounded-full"
         >
           <FaSearch color="#5F8D4E" size={25} />
           <span className="sr-only">Settings</span>
-        </button>
+        </a>
         <div
-          id="tooltip-settings"
+          id="tooltip-search"
           role="tooltip"
           className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
         >
-          Settings
+          search
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
       </div>
