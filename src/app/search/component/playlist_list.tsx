@@ -1,9 +1,15 @@
+import Card from "./card";
 export default function PlaylistList({ playlist }: any) {
+  console.log(playlist);
   return (
-    <div>
+    <div className="mb-[80px]">
       {playlist.map((item: any, index: number) => (
         <div key={index}>
-          <h1>{item.name}</h1>
+          <Card
+            img={item.images[0].url}
+            name={item.name}
+            desc={item.description}
+          />
         </div>
       ))}
     </div>

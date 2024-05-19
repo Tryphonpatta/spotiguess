@@ -2,7 +2,7 @@ import { FaHome, FaSearch, FaLink } from "react-icons/fa";
 
 export default function BottomNav() {
   return (
-    <div className="fixed z-50 w-[20rem] h-12 max-w-md -translate-x-1/2 bg-[#E5D9B6] border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600">
+    <div className="fixed z-50 w-[20rem] h-12 max-w-md  bg-[#E5D9B6] border border-gray-200 rounded-full bottom-4 dark:bg-gray-700 dark:border-gray-600">
       <div className="grid h-full max-w-md grid-cols-3 mx-auto rounded-full">
         <button
           data-tooltip-target="Home"

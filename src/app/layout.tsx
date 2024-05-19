@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="h-screen flex flex-col overflow-auto">
           <div className="h-full">{children}</div>
-          <div>
+          <div className=" inset-0 flex justify-center w-full">
             <BottomNav />
           </div>
         </div>

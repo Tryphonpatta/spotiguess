@@ -47,7 +47,10 @@ export default function SearchPage() {
               />
             </svg>
           </div>
-          <div className="flex items-center w-full h-full">
+          <form
+            action={fetchplaylists}
+            className="flex items-center w-full h-full"
+          >
             <input
               type="search"
               id="default-search"
@@ -58,15 +61,18 @@ export default function SearchPage() {
               required
             />
             <Button
+              type="submit"
               onPress={fetchplaylists}
               className="text-white absolute end-2.5 bottom-2.5 bg-[#609966] hover:bg-[#] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Search
             </Button>
-          </div>
+          </form>
         </div>
       </div>
-      {playlists && <PlaylistList playlist={playlists} />}
+      <div className="inset-0 flex justify-center">
+        {playlists && <PlaylistList playlist={playlists} />}
+      </div>
     </div>
   );
 }
