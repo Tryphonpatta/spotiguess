@@ -9,6 +9,7 @@ export default function PlaylistList({ playlist }: any) {
             img={item.images[0].url}
             name={item.name}
             desc={item.description}
+            href={item.id}
           />
         </div>
       ))}
